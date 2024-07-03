@@ -38,6 +38,7 @@
 			$uFullName = $_POST['fullname'];
 			$uEmail = $_POST['email'];
 			$pw = $_POST['pw'];
+			$hashed_password = password_hash($pw, PASSWORD_BCRYPT); // Hash the password
 			$address1 = $_POST['address1'];
 			$address2 = $_POST['address2'];
 			$postcode = $_POST['postcode'];
@@ -94,7 +95,7 @@
 									users.User_Name = '$uName',
 									users.User_Full_Name = '$uFullName',
 									users.User_Email = '$uEmail',
-									users.User_Password = '$pw',
+									users.User_Password = '$hashed_password',
 									user_details.Address1 = '$address1',
 									user_details.Address2 = '$address2',
 									user_details.Postcode = '$postcode',
@@ -135,7 +136,7 @@
 						users.User_Name = '$uName',
 						users.User_Full_Name = '$uFullName',
 						users.User_Email = '$uEmail',
-						users.User_Password = '$pw',
+						users.User_Password = '$hashed_password',
 						user_details.Address1 = '$address1',
 						user_details.Address2 = '$address2',
 						user_details.Postcode = '$postcode',
@@ -163,7 +164,7 @@
     <link rel="stylesheet" type="text/css" href="styleLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>User Account Details</title>
+    <title>Edit Account Details</title>
     <style>
         body {
             margin: 0;
@@ -185,6 +186,16 @@
             font-family: calibri, sans-serif;
             color: #E6DAD1;
         }
+		input[type="text"],
+		input[type="password"] {
+			width: 60%;
+			padding: 5px;
+			border: 1px solid #C7D8CF;
+			background-color: #C7D8CF;
+			border-radius: 5px;
+			box-sizing: border-box;
+			margin-bottom: 5px;
+		}
         #header {
             width: 100%;
             background-image: url('header bg pattern.png');

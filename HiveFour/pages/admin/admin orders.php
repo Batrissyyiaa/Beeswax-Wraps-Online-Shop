@@ -9,7 +9,7 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-	<title>Hive4</title>
+	<title>Orders</title>
 	<head>
 		<style>
             body{
@@ -263,13 +263,12 @@ function displayOrders() {
             <br>
             <tr>
                 <td colspan="2">
-                    <table id="list" border="0">
+                    <table id="list" border=0">
                         <tr>
-                            <td style="width: 150px; padding-left: 10px;">Order ID:</td>
-                            <td>' . htmlspecialchars($rOrd['Order_ID']) . '</td>
+                            <td colspan="2" style="width: 150px; padding-left: 10px;"><b>Order ID:</b> ' . htmlspecialchars($rOrd['Order_ID']) . '</td>
                             <td style="text-align: center;">
-                                <a href="invoice.php?orderId=' . htmlspecialchars($rOrd['Order_ID']) . '" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
-                                    INVOICE
+                                <a href="receipt.php?orderId=' . htmlspecialchars($rOrd['Order_ID']) . '" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
+                                    RECEIPT
                                 </a>
                             </td>
                         </tr>

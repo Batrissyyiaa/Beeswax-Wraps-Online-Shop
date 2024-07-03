@@ -10,7 +10,7 @@
 <head>
     <meta name="update" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4</title>
+    <title>Products</title>
     <style>
         body{
             background-color: #E6DAD1;
@@ -186,7 +186,6 @@ function displayProduct($productName, $productPic, $prodStatus, $productId){
         echo'
         <tr>
             <td style="width: 54px; padding-right: 10px;"><img src="'.$productPic.'" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; overflow: hidden;"></td>
-            <td style="width: 150px;">product name</td>
             <td>'.$productName.'</td>
             <td rowspan=2 style="width: 120px; padding-left:25px;">
                 <!-- link to specific product details -->

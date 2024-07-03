@@ -29,7 +29,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4 Shopping Cart</title>
+    <title>Shopping Cart</title>
     <style>
         body{
             margin:0;
@@ -243,7 +243,7 @@
               else {
                 echo '<div style="text-align: center;margin-top: 5rem;margin-bottom: 5rem">';
                 echo '<p>You have no item(s) in cart!</p>';
-                echo '<p>Back to <strong><a href="search product.php" style="color: orange">Shop</a></strong></p>';
+                echo '<p>Back to <strong><a href="search product.php" style="color: orange">Products</a></strong></p>';
                 echo '</div>';
               }
 

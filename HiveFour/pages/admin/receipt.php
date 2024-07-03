@@ -72,7 +72,7 @@ function getOrderDetails($orderId){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>HiveFour | Invoice</title>
+	<title>HiveFour | Receipt</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -237,7 +237,7 @@ function getOrderDetails($orderId){
 									$date = date("Y-m-d");
 									$time = date("h:i:s");
 									?>
-									Invoice: <?php echo $number?><br />
+									Receipt: <?php echo $number?><br />
 									Created: <?php echo $date?><br />
 									Time: <?php echo $time?>
 								</td>

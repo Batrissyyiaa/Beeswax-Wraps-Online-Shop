@@ -19,9 +19,11 @@ if(isset($_POST['Submit'])){
     $typeID = "UT01";
     $profilePic = "../../assets/userPic/default.jpg";
 
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
     /* execute SQL SELECT command */
     $sql = "SELECT User_Name FROM users WHERE User_Name = '$username'";
-    echo $sql;
     $query = mysqli_query($dbconn, $sql);
 
     if (!$query) {
@@ -38,7 +40,7 @@ if(isset($_POST['Submit'])){
     }
     else{
         /* execute SQL INSERT commands */
-        $sql2 = "INSERT INTO users (User_ID, User_Name, User_Email, User_Password, User_Full_Name, Type_ID, Profile_Pic) VALUES ('$uId','$username', '$email', '$password', '$fullName', '$typeID', '$profilePic')";
+        $sql2 = "INSERT INTO users (User_ID, User_Name, User_Email, User_Password, User_Full_Name, Type_ID, Profile_Pic) VALUES ('$uId','$username', '$email', '$hashed_password', '$fullName', '$typeID', '$profilePic')";
         $sql3 = "INSERT INTO user_details (User_Details_ID, Phone_No, Address1, Address2, Postcode, City, State, User_ID) VALUES ('$udId', '$phoneNumber', '$address1', '$address2', '$postcode', '$city', '$state', '$uId')";
 
         if (mysqli_query($dbconn, $sql2) && mysqli_query($dbconn, $sql3)) {
@@ -85,14 +87,14 @@ function createUserDetailsId(){
     include '../../config/dbconn.php';
 
     // Find the highest current user details ID
-    $sqlSelectMaxId = "SELECT User_ID FROM user_details ORDER BY User_Details_ID DESC LIMIT 1";
+    $sqlSelectMaxId = "SELECT User_Details_ID FROM user_details ORDER BY User_Details_ID DESC LIMIT 1";
     $result = mysqli_query($dbconn, $sqlSelectMaxId);
     if (!$result) {
         die("Error: " . mysqli_error($dbconn));
     }
 
     $row = mysqli_fetch_assoc($result);
-    $lastId = $row['User_ID'];
+    $lastId = $row['User_Details_ID'];
     
     // Extract the numeric part, increment it, and create the new ID
     $numericPart = intval(substr($lastId, 2)); // assuming the prefix "UD" is always 2 characters

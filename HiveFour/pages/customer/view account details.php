@@ -38,8 +38,8 @@ if (mysqli_num_rows($result) == 1) {
     echo "No user found.";
     exit();
 }
-$password_length = strlen($user_password);
-$password_asterisks = str_repeat('*', $password_length);
+// $password_length = strlen($user_password);
+// $password_asterisks = str_repeat('*', $password_length);
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $password_asterisks = str_repeat('*', $password_length);
     <link rel="stylesheet" type="text/css" href="styleLogin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>User Account Details</title>
+    <title>Profile</title>
     <style>
         body {
             margin: 0;
@@ -118,7 +118,7 @@ $password_asterisks = str_repeat('*', $password_length);
 		</tr>
 		<tr>
 			<td style="padding:20px;">Password</td>
-			<td><?php echo htmlspecialchars($password_asterisks); ?></td>
+			<td>******</td>
 		</tr>
 		<tr>
 			<td style="padding:20px;">Address 1</td>

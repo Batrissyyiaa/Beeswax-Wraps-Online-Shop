@@ -34,7 +34,7 @@
     }
 
     //get order/product based on name/id from database
-    function getOrderSearch($search){
+    function getOrderSearch($search,$uId){
         include '../../config/dbconn.php';
 
         $query = "SELECT * 
@@ -44,7 +44,7 @@
         JOIN order_details on order_details.Order_ID = orders.Order_ID
         JOIN product on product.Product_ID = order_details.Product_ID
         JOIN size on size.Size_ID = order_details.Size_ID
-        WHERE orders.Order_ID LIKE '%$search%' OR product.Product_Name LIKE '%$search%'";
+        WHERE users.User_ID = '$uId' AND (orders.Order_ID LIKE '%$search%' OR product.Product_Name LIKE '%$search%')";
         $result = mysqli_query($dbconn, $query);
         return $result;
     }
@@ -54,7 +54,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4 Order</title>
+    <title>Orders</title>
     <style>
         body{
             margin:0;
@@ -201,7 +201,7 @@
                     </script>";
                 exit();
             }
-            $result = getOrderSearch($search);
+            $result = getOrderSearch($search,$session);
             
             if ($result) { // Check if the query was successful
                 $queryResult = mysqli_num_rows($result);
@@ -218,8 +218,8 @@
                                     <b>ORDER ID:</b> <?php echo $rOrd['Order_ID'];?>
                                 </td>
                                 <td style="text-align: center;">
-                                    <a href="../../pages/admin/invoice.php?orderId=<?php echo $rOrd['Order_ID'];?>" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
-                                        INVOICE
+                                    <a href="../../pages/admin/receipt.php?orderId=<?php echo $rOrd['Order_ID'];?>" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
+                                        RECEIPT
                                     </a>
                                 </td>
                             </tr>
@@ -276,6 +276,7 @@
                         </td>
                         </tr>
                         <br>
+                        <?php exit();?>
 
     <?php
                     }
@@ -301,8 +302,8 @@
                 <b>ORDER ID:</b> <?php echo $rOrd['Order_ID'];?>
             </td>
             <td style="text-align: center;">
-                <a href="../../pages/admin/invoice.php?orderId=<?php echo $rOrd['Order_ID'];?>" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
-                    INVOICE
+                <a href="../../pages/admin/receipt.php?orderId=<?php echo $rOrd['Order_ID'];?>" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
+                    RECEIPT
                 </a>
             </td>
         </tr>
@@ -364,7 +365,7 @@
             }else {
                 echo '<div style="text-align: center;margin-top: 5rem;margin-bottom: 5rem">';
                 echo '<p>You have no order(s) been made yet!</p>';
-                echo '<p>Back to <strong><a href="search product.php" style="color: orange">Shop</a></strong></p>';
+                echo '<p>Back to <strong><a href="search product.php" style="color: orange">Products</a></strong></p>';
                 echo '</div>';
             }
         }

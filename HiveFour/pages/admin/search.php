@@ -10,7 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4</title>
+    <title>Search</title>
     <style>
         body{
             background-color: #E6DAD1;
@@ -352,7 +352,6 @@ function displayProduct($productName, $productPic, $prodStatus, $productId){
         echo'
         <tr>
             <td style="width: 54px; padding-right: 10px;"><img src="'.$productPic.'" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; overflow: hidden;"></td>
-            <td style="width: 150px;">product name</td>
             <td>'.$productName.'</td>
             <td rowspan=2 style="width: 120px; padding-left:25px;">
                 <a href="admin update product.php?productId='.$productId.'">
@@ -461,11 +460,10 @@ function displayOrders($orderId, $orderStatus, $orderPrice, $orderTotalPrice, $o
                 <td colspan="2">
                     <table id="list" border="0">
                         <tr>
-                            <td style="width: 150px; padding-left: 10px;">Order ID:</td>
-                            <td>' . htmlspecialchars($orderId) . '</td>
+                            <td colspan="2" style="width: 150px; padding-left: 10px;"><b>Order ID: </b>' . htmlspecialchars($orderId) . '</td>
                             <td style="text-align: center;">
-                                <a href="invoice.php?orderId=' . htmlspecialchars($orderId) . '" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
-                                    INVOICE
+                                <a href="receipt.php?orderId=' . htmlspecialchars($orderId) . '" target="_blank" style="display: inline-block; padding: 7px 12px; background-color: white; color: #8AB49C; border-radius: 10px; font-size: 12px; border: none; cursor: pointer;">
+                                    RECEIPT
                                 </a>
                             </td>
                         </tr>

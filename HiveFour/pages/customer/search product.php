@@ -14,7 +14,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4 products</title>
+    <title>Products</title>
     <style>
         body {
             margin: 0;
@@ -162,11 +162,11 @@
             echo'
             <tr>
                 <td style="width: 54px; padding-right: 10px;"><img src="'.$productPic.'" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; overflow: hidden;"></td>
-                <td style="width: 150px;">product name</td>
+                
                 <td>'.$productName.'</td>
                 <td rowspan=2 style="width: 120px; padding-left:25px;">
                     <a href="view product.php?productId='.$productId.'">
-                        <b>view</b>
+                        <b>buy</b>
                 </td>
             </tr>
             </table>

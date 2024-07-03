@@ -39,6 +39,7 @@
 			$uEmail= $_POST['email']; 
 			$pw= $_POST['pw'];
 			$confirmPw = $_POST['confirmPw'];
+			$hashed_password = password_hash($pw, PASSWORD_BCRYPT); // Hash the password
 
 			/* execute SQL SELECT command */
 			$sqlUName = "SELECT User_Name FROM users WHERE User_Name = '$uName' AND User_ID !='$uId' ";
@@ -84,7 +85,7 @@
 
 								## execute SQL UPDATE command 
 								$sqlUpdate = "UPDATE users SET User_Full_Name = '" . $uFullName . "', User_Name = '" . $uName . "',
-								User_Email= '" . $uEmail . "', User_Password = '" . $pw . "', Profile_Pic = '$fileDestination'
+								User_Email= '" . $uEmail . "', User_Password = '" . $hashed_password . "', Profile_Pic = '$fileDestination'
 								WHERE User_ID = '" . $uId . "'";
 								
 								mysqli_query($dbconn, $sqlUpdate) or die ("Error: " . mysqli_error($dbconn));
@@ -114,7 +115,7 @@
 							User_Full_Name = '$uFullName', 
 							User_Name = '$uName',
 							User_Email = '$uEmail', 
-							User_Password = '$pw'
+							User_Password = '$hashed_password'
 							WHERE User_ID = '$uId'";
 	
 						if (mysqli_query($dbconn, $sqlUpdate)) {
@@ -135,7 +136,7 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-	<title>Hive4</title>
+	<title>Edit Account Details</title>
 	<head>
 		<style>
 			body{

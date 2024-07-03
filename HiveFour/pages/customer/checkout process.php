@@ -83,7 +83,7 @@
 
                         // Display the alert
                         echo "<script>alert('The new order has been placed'); 
-                            window.location.href = 'cart.php';
+                            window.location.href = 'order.php';
                             </script>";
                         exit();
 
@@ -137,7 +137,6 @@
     
         // Find the highest current Order_Details_ID
         $sqlSelectMaxId = "SELECT MAX(Order_Details_ID) AS maxId FROM order_details";
-        echo $sqlSelectMaxId;
         $result = mysqli_query($dbconn, $sqlSelectMaxId);
         $row = mysqli_fetch_assoc($result);
         $maxId = $row['maxId'];

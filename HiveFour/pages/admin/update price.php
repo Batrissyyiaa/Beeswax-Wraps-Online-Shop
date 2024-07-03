@@ -68,7 +68,7 @@ function getSize($sizeId)
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Hive4</title>
+    <title>Update Price</title>
     <style>
         body {
             background-color: #E6DAD1;
